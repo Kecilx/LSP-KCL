@@ -12,18 +12,5 @@ class DashboardController extends Controller
     public function index()
     {
         // Mengambil statistik untuk ditampilkan di Dashboard
-        $totalCategories = Category::count();
-        $totalItems = Item::count();
-        $totalTransactions = Transaction::count();
-        $incomeToday = Transaction::whereDate('date', today())->sum('total');
-
-        return Inertia::render('Dashboard', [
-            'stats' => [
-                'categories' => $totalCategories,
-                'items' => $totalItems,
-                'transactions' => $totalTransactions,
-                'income_today' => $incomeToday
-            ]
-        ]);
     }
 }
